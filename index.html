@@ -128,10 +128,13 @@
 					</a-sphere>
 				</a-entity>
 			</a-entity>
-      <a-plane src="img/left.png" id="left-btn"  position="-0.6 2 -3.792"></a-plane>
-			<a-plane src="img/right.png" id="right-btn"  position="0.6 2 -3.792"></a-plane>
+      <a-plane src="img/left.png" id="left-btn"  position="-0.8 2 -3.792"></a-plane>
+			<a-plane src="img/right.png" id="right-btn"  position="0.8 2 -3.792"></a-plane>
 			<a-camera>
-        <a-cursor></a-cursor>
+        <a-cursor 
+                geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03;"
+                material="color: orange; shader: flat">
+        </a-cursor>
 				<!-- <a-plane id="scene5-intro" height="2" width="3" material="opacity:0;side:double;color:black" scale="0.19 0.197 0.528" position="0 0 -0.464">
           <a-entity geometry="primitive:plane" scale="2.8 1.855 1.383" position="0 0 0.02" material="shader:gif; src:url(img/intro/intros5.gif);" gif=""></a-entity>
       	</a-plane> -->
