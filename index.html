@@ -1,0 +1,156 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="apple-mobile-web-app-capable">
+		<title>scene5</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script> 
+    <!-- <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v3.12.4/dist/aframe-extras.min.js"></script> -->
+    <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+    <script src="https://rawgit.com/bryik/aframe-bmfont-text-component/master/dist/aframe-bmfont-text-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-text-geometry-component@^0.5.0/dist/aframe-text-geometry-component.min.js"></script>
+    <script src="https://unpkg.com/super-hands/dist/super-hands.js"></script>
+    <!-- <script src="https://cdn.rawgit.com/donmccurdy/aframe-physics-system/v2.1.0/dist/aframe-physics-system.min.js"></script>
+    <script src="https://unpkg.com/aframe-physics-extras/dist/aframe-physics-extras.js"></script> -->
+      <!-- <script src="js/aabb-collider.js"></script> -->
+    <script src="https://unpkg.com/aframe-aabb-collider-component/dist/aframe-aabb-collider-component.min.js"></script>
+		<script src="https://unpkg.com/aframe-animation-component@4.0.0-beta8/dist/aframe-animation-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@^4.0.0/dist/aframe-event-set-component.min.js"></script>
+    <script src="https://rawgit.com/feiss/aframe-environment-component/master/dist/aframe-environment-component.min.js"></script>
+    <script src="https://rawgit.com/mayognaise/aframe-gif-shader/master/dist/aframe-gif-shader.min.js"></script> 
+    <script src="https://rawgit.com/mayognaise/aframe-gif-component/master/dist/aframe-gif-component.min.js"></script>
+		
+		<script type="text/javascript" src="js/progress-bar.js"></script>
+	</head>
+	<body>
+		<script type="text/javascript" src="js/scenes/scene5.js"></script>
+		<a-scene>
+			<a-assets>
+				<img src="bg/s5.jpg" id="sky-img">
+				<a-asset-item src="model/pn.dae" id="pn"></a-asset-item>
+				<video src="video/Dr3.mp4" id="dr3-video"></video>
+				<img src="img/intro05.png" id="intro-img">
+			</a-assets>
+			<!-- playing hands -->
+			<!-- <a-entity id="rightHand" hand-controls="right" class="right-controller"></a-entity>
+	    <a-entity id="leftHand" hand-controls="left" class="left-controller"></a-entity>
+ -->
+	    
+			<a-entity falling-electrons	position="0 -0.8 -5"></a-entity>
+
+			<a-entity id="plate" position="0 -0.8 -5" rotation="0 90 0">
+				<a-text value="N" rotation="0 -90 0" scale="2 2 2" position="0 1.3 -1.5" text="color: yellow;"></a-text>
+				<a-text value="P" rotation="0 -90 0" scale="2 2 2" position="0 1.3 1.5" text="color: yellow;"></a-text>
+				<a-collada-model scale="3.035 3.035 3.035" src="#pn" collada-model="model/pn.dae" position="0.131 -1.001 -0.691"></a-collada-model>
+				<a-box id="reacter" animation__feedback="property:opacity;startEvents:electronHit;from: 1; to: 0.8;dur:100;" aabb-collider="objects: .electron;" position="0.254 0.179 0.267" scale="2.987 -0.403 1.451" material="opacity:0.8;color:#b9fffa"></a-box>
+				<a-entity id="org-e">
+					<a-sphere class="jumping-electrons" 
+										id="electron1" 
+										animation__jump1="property:position;startEvents:electronJump;from:-1.029 0.487 0.897;to: -1.029 0.487 2.4;dur:1000;" 
+										position="-1.029 0.487 0.897" 
+										scale="0.072 0.072 0.072" 
+										material="color:#3136ff">						
+					</a-sphere>
+					<a-sphere class="jumping-electrons" 
+										id="electron2" 
+										animation__jump2="property:position;startEvents:electronJump;from:0.474 0.487 0.897;to: 0.474 0.487 2.4;dur:1000;" 
+										position="0.474 0.487 0.897" 
+										scale="0.072 0.072 0.072" 
+										material="color:#3136ff">						
+					</a-sphere>
+					<a-sphere class="jumping-electrons" 
+										id="electron3" 
+										animation__jump3="property:position;startEvents:electronJump;from:0.474 0.487 2.4;to: 0.474 0.487 15;dur:1000;" 
+										position="0.474 0.487 2.4" 
+										scale="0.072 0.072 0.072"
+										alongpath="path:2,2,-5 -2,1,-2.5 0,1,-1; closed:false; dur:5000; delay:4000"
+										material="color:#3136ff">						
+					</a-sphere>
+					<a-sphere class="jumping-electrons" 
+										id="electron4" 
+										animation__jump4="property:position;startEvents:electronJump;from:-1.029 0.487 2.4;to: -1.029 0.487 15;dur:1000;" 
+										position="-1.029 0.487 2.4" 
+										scale="0.072 0.072 0.072" 
+										alongpath="path:2,2,-5 -2,1,-2.5 0,1,-1; closed:false; dur:5000; delay:4000"
+										material="color:#3136ff">						
+					</a-sphere>
+
+					<a-sphere class="jumping-electrons"
+										id="electron5"
+										visible="false"
+										animation__jump5="property:position;startEvents:electronJump;from:-0.938 0.487 -1.71;to: -0.934 0.487 -0.234;dur:1000;" 
+										position="-0.938 0.487 -1.71" 
+										scale="0.072 0.072 0.072" 
+										material="color:#3136ff">						
+					</a-sphere>
+					<a-sphere class="jumping-electrons"
+										id="electron6"
+										visible="false"
+										animation__jump6="property:position;startEvents:electronJump;from:0.574 0.487 -1.718;to: 0.574 0.487 -0.202;dur:1000;" 
+										position="0.574 0.487 -1.718" 
+										scale="0.072 0.072 0.072" 
+										material="color:#3136ff">						
+					</a-sphere>
+					<a-sphere class="jumping-electrons"
+										id="electron7"
+										visible="false"
+										animation__jump7="property:position;startEvents:electronJump;from:0.574 0.487 -0.202;to: 0.474 0.487 0.897;dur:1000;"
+
+										position="0.574 0.487 -0.202" 
+										scale="0.072 0.072 0.072" 
+										material="color:#3136ff">						
+					</a-sphere>
+					<a-sphere class="jumping-electrons"
+										id="electron8" 
+										visible="false"
+										animation__jump8="property:position;startEvents:electronJump;from:-0.934 0.487 -0.234;to: -1.029 0.487 0.897;dur:1000;"
+
+										position="-0.934 0.487 -0.234" 
+										scale="0.072 0.072 0.072" 
+										material="color:#3136ff">						
+					</a-sphere>
+
+					<a-sphere class="jumping-electrons"
+										id="electron9"
+
+										animation__jump9="property:position;startEvents:electronJump;from:-0.938 0.487 -15;to: -0.938 0.487 -1.71;dur:1000;" 
+										position="-0.938 0.487 -15" 
+										scale="0.072 0.072 0.072" 
+										material="color:#3136ff">						
+					</a-sphere>
+					<a-sphere class="jumping-electrons"
+										id="electron10" 
+										
+										animation__jump10="property:position;startEvents:electronJump;from:0.574 0.487 -15;to: 0.574 0.487 -1.718;dur:1000;" 
+										position="0.574 0.487 -15" 
+										scale="0.072 0.072 0.072" 
+										material="color:#3136ff">						
+					</a-sphere>
+				</a-entity>
+			</a-entity>
+      <a-plane src="img/left.png" id="left-btn"  position="0 2 -3.792"></a-plane>
+			<a-plane src="img/right.png" id="right-btn"  position="0 3 -3.792"></a-plane>
+			<a-camera>
+        <a-cursor></a-cursor>
+				<!-- <a-plane id="scene5-intro" height="2" width="3" material="opacity:0;side:double;color:black" scale="0.19 0.197 0.528" position="0 0 -0.464">
+          <a-entity geometry="primitive:plane" scale="2.8 1.855 1.383" position="0 0 0.02" material="shader:gif; src:url(img/intro/intros5.gif);" gif=""></a-entity>
+      	</a-plane> -->
+				<a-text id="scoreboard"  position="1.5 1.5 -3.500" text="color:red;align:center" value="Energy Collected">
+					<a-text id="percent" position="-0.007 -0.298 0" text="align:center;color:red" value="0"></a-text>
+					<a-entity progress-bar position="-0.5 -0.5 0"></a-entity>
+				</a-text>
+				<a-text id="timer" position="-1.5 1.5 -3.500" text="color:red;align:center" value="Time Remaining">
+					<a-text id="time" position="-0.007 -0.298 0" text="align:center;color:red" value="120 Secs"></a-text>
+				</a-text>
+				<a-video id="player" visible="false" src="#dr3-video" position="0 0 -3" scale="1.707 1 1"></a-video>
+
+				<!-- <a-image src="img/enter_scene6.png" position="0 0 -0.789" scale="1.562 1 1"></a-image>  -->
+			
+			</a-camera>
+			<a-sky src="#sky-img"></a-sky>
+			
+			<!-- <a-entity particle-system="preset:dust;particleCount:10000;color: #0000FF,#00FF00,#FF0000,#ff4e48" position="0 3.591 0" rotation="-40 4.8 -89"></a-entity> -->
+
+		</a-scene>
+	</body>
+</html>
